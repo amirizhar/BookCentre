@@ -1,49 +1,24 @@
 <!DOCTYPE html>
 <html>
-<title>Book Centre | Home</title>
+<title>Book Centre | Staff</title>
 <meta charset="UTF-8">
 
-
-<style>
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-  max-width:100%;
-  height:auto;
+<?php
+if (Session::has('firebaseUserId') && Session::has('idToken')) 
+{
+    // dd("User masih login.");
+} else {
+    dd("User sudah logout.");
 }
+?>
 
-/* The grid: Four equal columns that floats next to each other */
-.column {
-  float: left;
-  width: 16%;
-  padding: 10px 10px 10px 40px;
-  max-width:80%;
-  height:auto;
-  align-content: center;
-}
+<head>
+@include('Staff.navBar')
+@include('Staff.homeCss')
+</head>
 
-/* Style the images inside the grid */
-.column img {
-  opacity: 0.8; 
-  cursor: pointer; 
-  align: center;
-  padding: 10px 10px 10px 40px;
-  max-width:80%;
-  height:auto;
-  align-content: center;
-}
-
-/* Shadow untuk image categories */
-.column img:hover {
-  opacity: 10;
-}
-</style>
-
-<body>
-
-<br><br>
+<body style="align-content: center">
+<br>
 <h1><center>Categories</center></h1>
   <!-- 1st Row -->
 <div class="row">

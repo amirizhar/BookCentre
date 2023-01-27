@@ -2,7 +2,6 @@
  
 namespace App\Http\Controllers;
 
-
 use Faker\Factory as FakerFactory;
 use Illuminate\Http\Request;
 use Kreait\Firebase;
@@ -14,33 +13,11 @@ use Kreait\Firebase\Exception\Auth\RevokedIdToken;
 
 // https://firebase.google.com/docs/database/unity/retrieve-data
 
+// reference = https://www.youtube.com/watch?v=NKbvnOy5_wg&t=92s
+//             https://github.com/naufalist/larabase/blob/master/FirebaseController.php -->
+
 class FirebaseController extends Controller
 {
-    // public function index()
-    // {
-
-    //     $firebase = (new Factory)
-    //         ->withServiceAccount(__DIR__.'/bookcentre-21891-firebase-adminsdk-v567n-db0cfdaa64.json')
-    //         ->withDatabaseUri('https://bookcentre-21891-default-rtdb.asia-southeast1.firebasedatabase.app/');
- 
-    //     $database = $firebase->createDatabase();
-
-
-    //     $blog = $database
-    //     ->getReference('blog');
-
-    //     $Book = $database
-    //     ->getReference('Book');
- 
-    //     echo '<pre>';
-    //     print_r($blog->getvalue());
-    //     echo '</pre>';
-
-    //     echo '<pre>';
-    //     print_r($Book->getvalue());
-    //     echo '</pre>';
-    // }
-
     public function __construct()
     {
         $factory = (new Factory)
@@ -85,7 +62,7 @@ class FirebaseController extends Controller
             Session::put('idToken', $signInResult->idToken());
             Session::save();
 
-            dd($signInResult);
+            // dd($signInResult);
         } catch (\Throwable $e) {
             switch ($e->getMessage()) {
                 case 'INVALID_PASSWORD':
@@ -99,6 +76,8 @@ class FirebaseController extends Controller
                     break;
             }
         }
+
+        return redirect("/home");
     }
 
     public function signOut(){
@@ -108,10 +87,13 @@ class FirebaseController extends Controller
             Session::forget('firebaseUserId');
             Session::forget('idToken');
             Session::save();
-            dd("User berhasil logout.");
+
+            return redirect("/");
+            
         } else {
-            dd("User belum login.");
+            // dd("User belum login.");
         }
+        return redirect("/");
     }
 
     public function userCheck()    {
@@ -119,7 +101,8 @@ class FirebaseController extends Controller
 
         // $this->auth->revokeRefreshTokens("g7uq2i95RnXO8b5EvArxpSfILTT2");
 
-        if (Session::has('firebaseUserId') && Session::has('idToken')) {
+        if (Session::has('firebaseUserId') && Session::has('idToken')) 
+        {
             dd("User masih login.");
         } else {
             dd("User sudah logout.");

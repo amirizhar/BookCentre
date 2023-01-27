@@ -15,37 +15,23 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', function () {return view('welcome');});
-
+// Route::get('/', function () {return view('welcome');});
 // Route::get('data', [FirebaseController::class, 'index'])->name('firebase.index');
 
-Route::get('post', [PostController::class, 'index'])->name('post.inedx');
-
-Route::get('home', function () {
-    return view('home');
-});
-
-Route::get('loginPage', function () {
-    return view('login');
-});
+//Login
+Route::get('/', function () {return view('Login.login');});
+Route::post('login', [FirebaseController::class, 'signIn']);
+Route::get('home', function () {return view('Staff.home');});
 
 //Registration
 Route::get('userRegister', function () {return view('register');});
 Route::post('register', [FirebaseController::class, 'signUp']);
 
-//Login
-Route::get('userLogin', function () {return view('login');});
-Route::post('login', [FirebaseController::class, 'signIn']);
-
 //Logout
 Route::get('logout', [FirebaseController::class, 'signOut']);
-// Route::get('logout', 'FirebaseController@signOut');
 
 //CheckSession
 Route::get('check', [FirebaseController::class, 'userCheck']);
-// Route::get('check', 'FirebaseController@userCheck');
 
-
-// Route::get('contacts', [ContactController::class, 'index']);
-// Route::get('add-contact', [ContactController::class, 'create']);
-// Route::post('contacts', [ContactController::class, 'store']);
+// display, update, delete
+Route::get('post', [PostController::class, 'index'])->name('post.inedx');
