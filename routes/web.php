@@ -15,17 +15,10 @@ use App\Http\Controllers\PostController;
 |
 */
 
-// Route::get('/', function () {return view('welcome');});
-// Route::get('data', [FirebaseController::class, 'index'])->name('firebase.index');
-
-//Login
+// ---------------------------------Session---------------------------------
 Route::get('/', function () {return view('Login.login');});
 Route::post('login', [FirebaseController::class, 'signIn']);
 Route::get('home', function () {return view('Staff.home');});
-
-//Registration
-Route::get('userRegister', function () {return view('register');});
-Route::post('register', [FirebaseController::class, 'signUp']);
 
 //Logout
 Route::get('logout', [FirebaseController::class, 'signOut']);
@@ -33,5 +26,14 @@ Route::get('logout', [FirebaseController::class, 'signOut']);
 //CheckSession
 Route::get('check', [FirebaseController::class, 'userCheck']);
 
+// ---------------------------------Admin---------------------------------
+
+//Registration
+Route::get('userRegister', function () {return view('register');});
+Route::post('register', [FirebaseController::class, 'signUp']);
+
+
+// ---------------------------------Staff---------------------------------
+
 // display, update, delete
-Route::get('post', [PostController::class, 'index'])->name('post.inedx');
+Route::get('post', [FirebaseController::class, 'index'])->name('post.inedx');

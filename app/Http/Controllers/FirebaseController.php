@@ -25,6 +25,18 @@ class FirebaseController extends Controller
         ->withDatabaseUri('https://bookcentre-21891-default-rtdb.asia-southeast1.firebasedatabase.app/');
 
         $this->auth = $factory->createAuth();
+        $this->database = $factory->createDatabase();
+    }
+
+    public function index()
+    {
+        $factory = (new Factory)
+        ->withServiceAccount(__DIR__.'/bookcentre-21891-firebase-adminsdk-v567n-db0cfdaa64.json')
+        ->withDatabaseUri('https://bookcentre-21891-default-rtdb.asia-southeast1.firebasedatabase.app/');
+
+        $this->database = $factory->createDatabase();
+
+        return view('Staff.index');
     }
 
     public function signUp(Request $req)
@@ -146,4 +158,5 @@ class FirebaseController extends Controller
         // }
         // return $response;
     }
+
 }
