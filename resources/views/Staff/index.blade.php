@@ -50,7 +50,7 @@ if (Session::has('firebaseUserId') && Session::has('idToken'))
                                     <th scope="col">Title</th>
                                     <th scope="col">Language</th>
                                     <th scope="col">Publisher</th>
-                                    <th scope="col">Price (RM)</th>
+                                    <th scope="col">Price</th>
                                     <th scope="col">Store</th>
                                     <th scope="col">Category</th>
                                     <th scope="col">Stock</th>
@@ -341,7 +341,7 @@ if (Session::has('firebaseUserId') && Session::has('idToken'))
                                 <td>' + value.title + '</td>\
                                 <td>' + value.language + '</td>\
                                 <td>' + value.publisher + '</td>\
-                                <td>' + value.price + '</td>\
+                                <td> RM ' + value.price + '</td>\
                                 <td>' + value.store + '</td>\
                                 <td>' + value.category + '</td>\
                                 <td>' + value.stock + '</td>\
