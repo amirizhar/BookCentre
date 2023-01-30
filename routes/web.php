@@ -29,11 +29,17 @@ Route::get('check', [FirebaseController::class, 'userCheck']);
 // ---------------------------------Admin---------------------------------
 
 //Registration
-Route::get('userRegister', function () {return view('register');});
+Route::get('userRegister', function () {return view('Admin.register');});
 Route::post('register', [FirebaseController::class, 'signUp']);
 
 
 // ---------------------------------Staff---------------------------------
 
+//Display book for one category
+Route::get('books', function () {return view('Staff.displayBooks');});
+
 // display, update, delete
 Route::get('post', [FirebaseController::class, 'index'])->name('post.inedx');
+
+// Contact Page
+Route::get('contact', function () {return view('Staff.contactPage');});

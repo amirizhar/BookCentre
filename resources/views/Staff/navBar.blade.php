@@ -19,14 +19,8 @@ if (Session::has('firebaseUserId') && Session::has('idToken'))
 
             <ul>
                 <li><a href="logout">Logout</a></li>
-                <li><a href="">Contact</a></li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)" class="dropbtn">Book</a>
-                    <div class="dropdown-content">
-                        <a href="post">Add</a>
-                        <a href="">View</a>
-
-                </li>
+                <li><a href="contact">Contact</a></li>
+                <li><a href="post">Book</a></li>
         </div>
         </li>
         </ul>

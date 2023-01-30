@@ -14,20 +14,22 @@ if (Session::has('firebaseUserId') && Session::has('idToken'))
 
 <head>
     <meta charset="utf-8">
-    <title>Book Centre | Manage Book</title>
+    <title>Book Centre | Contact</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
+
 <style>
-  .container {
-    margin-top: 70px;
-  }
-</style>
+    .container {
+      margin-top: 70px;
+    }
+  </style>
 
 <body>
 
     @include('Staff.navBar')
+
 
     <div class="container">
         <div class="row">
@@ -35,10 +37,10 @@ if (Session::has('firebaseUserId') && Session::has('idToken'))
                 <div class="card">
                     <div class="card-header">
                         Book List
-                        <div class="float-end">
+                        {{-- <div class="float-end">
                             <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
                                 data-bs-target="#add-modal">Add Book</button>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="card-body">
                         <table class="table table-hover">
@@ -123,40 +125,31 @@ if (Session::has('firebaseUserId') && Session::has('idToken'))
                         <div class="mb-3">
                             <label for="category" class="form-label">Caterory</label><br>
                             <select type="text" name="category" id="category">
-
-                              <option value="BusinessEconomics">Business & Economics</option>
-                              <option value="ChildrensBooks">Childrens Books</option>
-                              <option value="ComicsGraphic">Comics & Graphic</option>
-                              
+                              <option value="Business & Economics">Business & Economics</option>
+                              <option value="Children's Books">Children's Books</option>
+                              <option value="Comics & Graphic">Comics & Graphic</option>
                               <option value="Novels">Novels</option>
-                              <option value="FamilyRelationships">Family & Relationships</option>
+                              <option value="Family & Relationships">Family & Relationships</option>
                               <option value="Languages">Languages</option>
-
                               <option value="Religion">Religion</option>
-                              <option value="ComputersInternet">Computers & Internet</option>
-                              <option value="DesigntheArts">Design & the Arts</option>
-
-                              <option value="HistoryPolitics">History & Politics</option>
-                              <option value="HealthWellBeing">Health & Well-Being</option>
+                              <option value="Computers & Internet">Computers & Internet</option>
+                              <option value="Design & the Arts">Design & the Arts</option>
+                              <option value="History & Politics">History & Politics</option>
+                              <option value="Health & Well-Being">Health & Well-Being</option>
                               <option value="Sport">Sport</option>
-
-                              <option value="HobbiesCollectibles">Hobbies & Collectibles</option>
-                              <option value="SocialScience">Social Science</option>
+                              <option value="Hobbies & Collectibles">Hobbies & Collectibles</option>
+                              <option value="Social Science">Social Science</option>
                               <option value="Science">Science</option>
-
-                              <option value="FoodDrink">Food & Drink</option>
-                              <option value="SelfEnrichment">Self-Enrichment</option>
-                              <option value="Localstudy">Local study</option>
-
+                              <option value="Food & Drink">Food & Drink</option>
+                              <option value="Self-Enrichment">Self-Enrichment</option>
+                              <option value="Local study">Local study</option>
                               <option value="Textbooks">Textbooks</option>
-                              <option value="LanguageExam">Language Exam</option>
-                              <option value="InternationalExam">International Exam</option>
-
+                              <option value="Language Exam">Language Exam</option>
+                              <option value="International Exam">International Exam</option>
                               <option value="Fiction">Fiction</option>
-                              <option value="Nonfiction">Non-fiction</option>
-                              <option value="ChineseBooks">Chinese Books</option>
-
-                              <option value="JapaneseBooks">Japanese Books</option>
+                              <option value="Non-fiction">Non-fiction</option>
+                              <option value="Chinese Books">Chinese Books</option>
+                              <option value="Japanese Books">Japanese Books</option>
                               <option value="Lifestyle">Lifestyle</option>
                               <option value="Others">Others</option>
                             </select>
