@@ -1,5 +1,4 @@
 {{-- reference = https://www.laravelcode.com/post/laravel-8-crud-operation-example-using-google-firebase  --}}
-
 <?php
 if (Session::has('firebaseUserId') && Session::has('idToken')) 
 {
