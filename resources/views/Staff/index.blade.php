@@ -1,10 +1,9 @@
 {{-- reference = https://www.laravelcode.com/post/laravel-8-crud-operation-example-using-google-firebase  --}}
 <?php
-if (Session::has('firebaseUserId') && Session::has('idToken')) 
-{
+if (Session::has('firebaseUserId') && Session::has('idToken')) {
     // dd("User masih login.");
 } else {
-    dd("User sudah logout.");
+    dd('User sudah logout.');
 }
 ?>
 
@@ -19,9 +18,9 @@ if (Session::has('firebaseUserId') && Session::has('idToken'))
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <style>
-  .container {
-    margin-top: 70px;
-  }
+    .container {
+        margin-top: 70px;
+    }
 </style>
 
 <body>
@@ -123,50 +122,50 @@ if (Session::has('firebaseUserId') && Session::has('idToken'))
                             <label for="category" class="form-label">Caterory</label><br>
                             <select type="text" name="category" id="category">
 
-                              <option value="BusinessEconomics">Business & Economics</option>
-                              <option value="ChildrensBooks">Childrens Books</option>
-                              <option value="ComicsGraphic">Comics & Graphic</option>
-                              
-                              <option value="Novels">Novels</option>
-                              <option value="FamilyRelationships">Family & Relationships</option>
-                              <option value="Languages">Languages</option>
+                                <option value="BusinessEconomics">Business & Economics</option>
+                                <option value="ChildrensBooks">Childrens Books</option>
+                                <option value="ComicsGraphic">Comics & Graphic</option>
 
-                              <option value="Religion">Religion</option>
-                              <option value="ComputersInternet">Computers & Internet</option>
-                              <option value="DesigntheArts">Design & the Arts</option>
+                                <option value="Novels">Novels</option>
+                                <option value="FamilyRelationships">Family & Relationships</option>
+                                <option value="Languages">Languages</option>
 
-                              <option value="HistoryPolitics">History & Politics</option>
-                              <option value="HealthWellBeing">Health & Well-Being</option>
-                              <option value="Sport">Sport</option>
+                                <option value="Religion">Religion</option>
+                                <option value="ComputersInternet">Computers & Internet</option>
+                                <option value="DesigntheArts">Design & the Arts</option>
 
-                              <option value="HobbiesCollectibles">Hobbies & Collectibles</option>
-                              <option value="SocialScience">Social Science</option>
-                              <option value="Science">Science</option>
+                                <option value="HistoryPolitics">History & Politics</option>
+                                <option value="HealthWellBeing">Health & Well-Being</option>
+                                <option value="Sport">Sport</option>
 
-                              <option value="FoodDrink">Food & Drink</option>
-                              <option value="SelfEnrichment">Self-Enrichment</option>
-                              <option value="Localstudy">Local study</option>
+                                <option value="HobbiesCollectibles">Hobbies & Collectibles</option>
+                                <option value="SocialScience">Social Science</option>
+                                <option value="Science">Science</option>
 
-                              <option value="Textbooks">Textbooks</option>
-                              <option value="LanguageExam">Language Exam</option>
-                              <option value="InternationalExam">International Exam</option>
+                                <option value="FoodDrink">Food & Drink</option>
+                                <option value="SelfEnrichment">Self-Enrichment</option>
+                                <option value="Localstudy">Local study</option>
 
-                              <option value="Fiction">Fiction</option>
-                              <option value="Nonfiction">Non-fiction</option>
-                              <option value="ChineseBooks">Chinese Books</option>
+                                <option value="Textbooks">Textbooks</option>
+                                <option value="LanguageExam">Language Exam</option>
+                                <option value="InternationalExam">International Exam</option>
 
-                              <option value="JapaneseBooks">Japanese Books</option>
-                              <option value="Lifestyle">Lifestyle</option>
-                              <option value="Others">Others</option>
+                                <option value="Fiction">Fiction</option>
+                                <option value="Nonfiction">Non-fiction</option>
+                                <option value="ChineseBooks">Chinese Books</option>
+
+                                <option value="JapaneseBooks">Japanese Books</option>
+                                <option value="Lifestyle">Lifestyle</option>
+                                <option value="Others">Others</option>
                             </select>
-                            </div>
+                        </div>
 
                         <div class="mb-3">
-                        <label for="stock" class="form-label">Stock</label><br>
-                        <select type="text" name="stock" id="stock">
-                          <option value="Not Available">Not Available</option>
-                          <option value="Available">Available</option>
-                        </select>
+                            <label for="stock" class="form-label">Stock</label><br>
+                            <select type="text" name="stock" id="stock">
+                                <option value="Not Available">Not Available</option>
+                                <option value="Available">Available</option>
+                            </select>
                         </div>
 
                         <button type="button" id="add-submit" class="btn btn-primary">Register Book</button>
@@ -189,93 +188,80 @@ if (Session::has('firebaseUserId') && Session::has('idToken'))
                 <div class="modal-body">
                     <form id="update-post" method="post">
 
-                        {{-- <div class="mb-3">
-                            <label for="update-title" class="form-label">Title</label>
-                            <input type="text" class="form-control" name="title" id="update-title">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="update-content" class="form-label">Content</label>
-                            <textarea class="form-control" name="content" id="update-content"></textarea>
-                        </div> --}}
-
-                        {{-- ------------------------------------------------------------------------------------ --}}
-
-
-                        {{-- <div class="mb-3">
+                        <div class="mb-3" hidden>
                             <label for="update-isbn" class="form-label">ISBN</label>
                             <input type="number" class="form-control" id="update-isbn" name="isbn">
-                        </div> --}}
+                        </div>
 
-                        <div class="mb-3">
+                        <div class="mb-3" hidden>
                             <label for="update-title" class="form-label">Title</label>
-                            <input type="text" class="form-control" id="update-title" name="title" disabled>
+                            <input type="text" class="form-control" id="update-title" name="title">
                         </div> 
 
-                        {{-- <div class="mb-3">
+                        <div class="mb-3" hidden>
                             <label for="update-language" class="form-label">Language</label>
                             <input type="text" class="form-control" id="update-language" name="language">
                         </div>
 
-                        <div class="mb-3">
+                        <div class="mb-3" hidden>
                             <label for="update-publisher" class="form-label">Publisher</label>
                             <input type="text" class="form-control" id="update-publisher" name="publisher">
-                        </div>  --}}
+                        </div>
 
                         <div class="mb-3">
                             <label for="update-price" class="form-label">Price</label>
                             <input type="number" class="form-control" id="update-price" name="price">
                         </div>
 
-                        {{-- <div class="mb-3">
+                        <div class="mb-3" hidden>
                             <label for="update-store" class="form-label">Store</label>
                             <input type="text" class="form-control" id="update-store" name="store">
                         </div>
 
-                        <div class="mb-3">
+                        <div class="mb-3" hidden>
                             <label for="update-summary" class="form-label">Summary</label>
                             <textarea type="text" class="form-control" id="update-summary" name="summary"></textarea>
-                        </div> --}}
-
-                        {{-- <div class="mb-3">
-                            <label for="update-category" class="form-label">Caterory</label><br>
-                            <select type="text" name="category" id="update-category">
-                              <option value="Business & Economics">Business & Economics</option>
-                              <option value="Children's Books">Children's Books</option>
-                              <option value="Comics & Graphic">Comics & Graphic</option>
-                              <option value="Novels">Novels</option>
-                              <option value="Family & Relationships">Family & Relationships</option>
-                              <option value="Languages">Languages</option>
-                              <option value="Religion">Religion</option>
-                              <option value="Computers & Internet">Computers & Internet</option>
-                              <option value="Design & the Arts">Design & the Arts</option>
-                              <option value="History & Politics">History & Politics</option>
-                              <option value="Health & Well-Being">Health & Well-Being</option>
-                              <option value="Sport">Sport</option>
-                              <option value="Hobbies & Collectibles">Hobbies & Collectibles</option>
-                              <option value="Social Science">Social Science</option>
-                              <option value="Science">Science</option>
-                              <option value="Food & Drink">Food & Drink</option>
-                              <option value="Self-Enrichment">Self-Enrichment</option>
-                              <option value="Local study">Local study</option>
-                              <option value="Textbooks">Textbooks</option>
-                              <option value="Language Exam">Language Exam</option>
-                              <option value="International Exam">International Exam</option>
-                              <option value="Fiction">Fiction</option>
-                              <option value="Non-fiction">Non-fiction</option>
-                              <option value="Chinese Books">Chinese Books</option>
-                              <option value="Japanese Books">Japanese Books</option>
-                              <option value="Lifestyle">Lifestyle</option>
-                              <option value="Others">Others</option>
-                            </select>
-                            </div> --}}
+                        </div>
 
                         <div class="mb-3">
-                        <label for="update-stock" class="form-label">Stock</label><br>
-                        <select type="text" name="stock" id="update-stock">
-                          <option value="Not Available">Not Available</option>
-                          <option value="Available">Available</option>
-                        </select>
+                            <label for="update-category" class="form-label">Category</label><br>
+                            <select type="text" name="category" id="update-category">
+                                <option value="BusinessEconomics">Business & Economics</option>
+                                <option value="Children's Books">Children's Books</option>
+                                <option value="Comics & Graphic">Comics & Graphic</option>
+                                <option value="Novels">Novels</option>
+                                <option value="Family & Relationships">Family & Relationships</option>
+                                <option value="Languages">Languages</option>
+                                <option value="Religion">Religion</option>
+                                <option value="Computers & Internet">Computers & Internet</option>
+                                <option value="Design & the Arts">Design & the Arts</option>
+                                <option value="History & Politics">History & Politics</option>
+                                <option value="Health & Well-Being">Health & Well-Being</option>
+                                <option value="Sport">Sport</option>
+                                <option value="Hobbies & Collectibles">Hobbies & Collectibles</option>
+                                <option value="Social Science">Social Science</option>
+                                <option value="Science">Science</option>
+                                <option value="Food & Drink">Food & Drink</option>
+                                <option value="Self-Enrichment">Self-Enrichment</option>
+                                <option value="Local study">Local study</option>
+                                <option value="Textbooks">Textbooks</option>
+                                <option value="Language Exam">Language Exam</option>
+                                <option value="International Exam">International Exam</option>
+                                <option value="Fiction">Fiction</option>
+                                <option value="Non-fiction">Non-fiction</option>
+                                <option value="Chinese Books">Chinese Books</option>
+                                <option value="Japanese Books">Japanese Books</option>
+                                <option value="Lifestyle">Lifestyle</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3" hidden>
+                            <label for="update-stock" class="form-label">Stock</label><br>
+                            <select type="text" name="stock" id="update-stock">
+                                <option value="Not Available">Not Available</option>
+                                <option value="Available">Available</option>
+                            </select>
                         </div>
 
                         <button type="button" id="update-button" class="btn btn-primary">Update</button>
@@ -335,22 +321,23 @@ if (Session::has('firebaseUserId') && Session::has('idToken'))
             $.each(value, function(index, value) {
                 if (value) {
                     htmls.push('<tr>\
-                                <td>' + index + '</td>\
-                                <td>' + value.isbn + '</td>\
-                                <td>' + value.title + '</td>\
-                                <td>' + value.language + '</td>\
-                                <td>' + value.publisher + '</td>\
-                                <td> RM ' + value.price + '</td>\
-                                <td>' + value.store + '</td>\
-                                <td>' + value.category + '</td>\
-                                <td>' + value.stock + '</td>\
-                                <td style="text-align:justify;">' + value.summary +'</td>\
-                                <td><a data-bs-toggle="modal" data-bs-target="#update-modal" class="btn btn-success update-post" data-id="' +
+                                    <td>' + index + '</td>\
+                                    <td>' + value.isbn + '</td>\
+                                    <td>' + value.title + '</td>\
+                                    <td>' + value.language + '</td>\
+                                    <td>' + value.publisher + '</td>\
+                                    <td> RM' + value.price + '</td>\
+                                    <td>' + value.store + '</td>\
+                                    <td>' + value.category + '</td>\
+                                    <td>' + value.stock + '</td>\
+                                    <td style="text-align:justify;">' + value.summary +
+                        '</td>\
+                                    <td><a data-bs-toggle="modal" data-bs-target="#update-modal" class="btn btn-success update-post" data-id="' +
                         index +
                         '">Update</a>\
-                                <a data-bs-toggle="modal" data-bs-target="#delete-modal" class="btn btn-danger delete-data" data-id="' +
+                                    <a data-bs-toggle="modal" data-bs-target="#delete-modal" class="btn btn-danger delete-data" data-id="' +
                         index + '">Delete</a></td>\
-                            </tr>');
+                                </tr>');
                 }
                 lastId = index;
             });
@@ -380,37 +367,37 @@ if (Session::has('firebaseUserId') && Session::has('idToken'))
             $("#add-modal").modal('hide');
         });
 
-        // -----------------------update modal-----------------------------
+        // ---------fetch data from db and display in the form---------------
         var updateID = 0;
         $('body').on('click', '.update-post', function() {
             updateID = $(this).attr('data-id');
             firebase.database().ref('books/' + updateID).on('value', function(snapshot) {
                 var values = snapshot.val();
-                // $('#update-title').val(values.title);
-                // $('#update-isbn').val(values.isbn);
-                // $('#update-language').val(values.language);
-                // $('#update-publisher').val(values.publisher);
+                $('#update-isbn').val(values.isbn);
+                $('#update-title').val(values.title);
                 $('#update-price').val(values.price);
-                // $('#update-store').val(values.store);
-                // $('#update-summary').val(values.summary);
                 $('#update-stock').val(values.stock);
-                // $('#update-category').val(values.category);
+                $('#update-language').val(values.language);
+                $('#update-publisher').val(values.publisher);
+                $('#update-store').val(values.store);
+                $('#update-summary').val(values.summary);
+                $('#update-category').val(values.category);
             });
         });
 
-        // --------------------------update post----------------------------
+        // --------------------------update to DB----------------------------
         $('#update-button').on('click', function() {
             var values = $("#update-post").serializeArray();
             var postData = {
-                // title: values[0].value,
-                // isbn: value[1].value,
-                // language: values[2].value,
-                // publisher: values[3].value,
-                price: values[0].value,
-                // store: values[5].value,
-                // summary: values[6].value,
-                stock: values[1].value,
-                // category: values[8].value,
+                isbn: values[0].value,
+                title: values[1].value,
+                language: values[2].value,
+                publisher: values[3].value,
+                price: values[4].value,
+                store: values[5].value,
+                summary: values[6].value,
+                category: values[7].value,
+                stock: values[8].value,
             };
 
             var updatedPost = {};
