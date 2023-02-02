@@ -359,8 +359,6 @@ if (Session::has('firebaseUserId') && Session::has('idToken')) {
                 summary: formData[6].value,
                 category: formData[7].value,
                 stock: formData[8].value,
-                image: formData[9].value,
-
             });
 
             // Reassign lastID value
