@@ -67,7 +67,7 @@ if (Session::has('firebaseUserId') && Session::has('idToken')) {
     </div>
 
 
-    {{-- create modal --}}
+    {{-- Add Book --}}
     <div class="modal fade" id="add-modal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -77,11 +77,6 @@ if (Session::has('firebaseUserId') && Session::has('idToken')) {
                 </div>
                 <div class="modal-body">
                     <form id="add-post" method="post">
-
-                        {{-- <div class="mb-3">
-                            <label for="cover" class="form-label">Choose a book cover:</label><br>
-                            <input type="file" id="cover" name="cover" accept="image/png, image/jpeg">
-                        </div> --}}
 
                         <div class="mb-3">
                             <label for="isbn" class="form-label">ISBN</label>
@@ -168,6 +163,11 @@ if (Session::has('firebaseUserId') && Session::has('idToken')) {
                             </select>
                         </div>
 
+                        <div class="mb-3">
+                            <label for="cover" class="form-label">Choose a book cover:</label><br>
+                            <input type="file" id="cover" name="cover" accept="image/png, image/jpeg">
+                        </div>
+
                         <button type="button" id="add-submit" class="btn btn-primary">Register Book</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </form>
@@ -196,7 +196,7 @@ if (Session::has('firebaseUserId') && Session::has('idToken')) {
                         <div class="mb-3" hidden>
                             <label for="update-title" class="form-label">Title</label>
                             <input type="text" class="form-control" id="update-title" name="title">
-                        </div> 
+                        </div>
 
                         <div class="mb-3" hidden>
                             <label for="update-language" class="form-label">Language</label>
@@ -321,23 +321,23 @@ if (Session::has('firebaseUserId') && Session::has('idToken')) {
             $.each(value, function(index, value) {
                 if (value) {
                     htmls.push('<tr>\
-                                    <td>' + index + '</td>\
-                                    <td>' + value.isbn + '</td>\
-                                    <td>' + value.title + '</td>\
-                                    <td>' + value.language + '</td>\
-                                    <td>' + value.publisher + '</td>\
-                                    <td> RM' + value.price + '</td>\
-                                    <td>' + value.store + '</td>\
-                                    <td>' + value.category + '</td>\
-                                    <td>' + value.stock + '</td>\
-                                    <td style="text-align:justify;">' + value.summary +
+                                        <td>' + index + '</td>\
+                                        <td>' + value.isbn + '</td>\
+                                        <td>' + value.title + '</td>\
+                                        <td>' + value.language + '</td>\
+                                        <td>' + value.publisher + '</td>\
+                                        <td> RM' + value.price + '</td>\
+                                        <td>' + value.store + '</td>\
+                                        <td>' + value.category + '</td>\
+                                        <td>' + value.stock + '</td>\
+                                        <td style="text-align:justify;">' + value.summary +
                         '</td>\
-                                    <td><a data-bs-toggle="modal" data-bs-target="#update-modal" class="btn btn-success update-post" data-id="' +
+                                        <td><a data-bs-toggle="modal" data-bs-target="#update-modal" class="btn btn-success update-post" data-id="' +
                         index +
                         '">Update</a>\
-                                    <a data-bs-toggle="modal" data-bs-target="#delete-modal" class="btn btn-danger delete-data" data-id="' +
+                                        <a data-bs-toggle="modal" data-bs-target="#delete-modal" class="btn btn-danger delete-data" data-id="' +
                         index + '">Delete</a></td>\
-                                </tr>');
+                                    </tr>');
                 }
                 lastId = index;
             });
@@ -359,6 +359,8 @@ if (Session::has('firebaseUserId') && Session::has('idToken')) {
                 summary: formData[6].value,
                 category: formData[7].value,
                 stock: formData[8].value,
+                image: formData[9].value,
+
             });
 
             // Reassign lastID value

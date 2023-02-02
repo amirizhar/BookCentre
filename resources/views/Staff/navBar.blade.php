@@ -20,7 +20,7 @@ if (Session::has('firebaseUserId') && Session::has('idToken'))
             <ul>
                 <li><a href="logout">Logout</a></li>
                 <li><a href="contact">Contact</a></li>
-                <li><a href="post">Book</a></li>
+                <li><a href="manageBook">Book</a></li>
         </div>
         </li>
         </ul>

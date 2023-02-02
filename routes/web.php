@@ -39,7 +39,7 @@ Route::post('register', [FirebaseController::class, 'signUp']);
 Route::get('books', function () {return view('Staff.displayBooks');});
 
 // display, update, delete
-Route::get('post', [FirebaseController::class, 'index'])->name('post.inedx');
+Route::get('manageBook', [FirebaseController::class, 'index'])->name('post.inedx');
 
 // Contact Page
 Route::get('contact', function () {return view('Staff.contactPage');});
