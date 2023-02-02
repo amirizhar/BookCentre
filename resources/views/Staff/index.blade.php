@@ -227,30 +227,30 @@ if (Session::has('firebaseUserId') && Session::has('idToken')) {
                             <label for="update-category" class="form-label">Category</label><br>
                             <select type="text" name="category" id="update-category">
                                 <option value="BusinessEconomics">Business & Economics</option>
-                                <option value="Children's Books">Children's Books</option>
-                                <option value="Comics & Graphic">Comics & Graphic</option>
+                                <option value="ChildrensBooks">Children's Books</option>
+                                <option value="ComicsGraphic">Comics & Graphic</option>
                                 <option value="Novels">Novels</option>
-                                <option value="Family & Relationships">Family & Relationships</option>
+                                <option value="FamilyRelationships">Family & Relationships</option>
                                 <option value="Languages">Languages</option>
                                 <option value="Religion">Religion</option>
-                                <option value="Computers & Internet">Computers & Internet</option>
-                                <option value="Design & the Arts">Design & the Arts</option>
-                                <option value="History & Politics">History & Politics</option>
-                                <option value="Health & Well-Being">Health & Well-Being</option>
+                                <option value="ComputersInternet">Computers & Internet</option>
+                                <option value="DesigntheArts">Design & the Arts</option>
+                                <option value="HistoryPolitics">History & Politics</option>
+                                <option value="HealthWell-Being">Health & Well-Being</option>
                                 <option value="Sport">Sport</option>
-                                <option value="Hobbies & Collectibles">Hobbies & Collectibles</option>
-                                <option value="Social Science">Social Science</option>
+                                <option value="HobbiesCollectibles">Hobbies & Collectibles</option>
+                                <option value="SocialScience">Social Science</option>
                                 <option value="Science">Science</option>
-                                <option value="Food & Drink">Food & Drink</option>
-                                <option value="Self-Enrichment">Self-Enrichment</option>
-                                <option value="Local study">Local study</option>
+                                <option value="FoodDrink">Food & Drink</option>
+                                <option value="SelfEnrichment">Self-Enrichment</option>
+                                <option value="Localstudy">Local study</option>
                                 <option value="Textbooks">Textbooks</option>
-                                <option value="Language Exam">Language Exam</option>
-                                <option value="International Exam">International Exam</option>
+                                <option value="LanguageExam">Language Exam</option>
+                                <option value="InternationalExam">International Exam</option>
                                 <option value="Fiction">Fiction</option>
-                                <option value="Non-fiction">Non-fiction</option>
-                                <option value="Chinese Books">Chinese Books</option>
-                                <option value="Japanese Books">Japanese Books</option>
+                                <option value="Nonfiction">Non-fiction</option>
+                                <option value="ChineseBooks">Chinese Books</option>
+                                <option value="JapaneseBooks">Japanese Books</option>
                                 <option value="Lifestyle">Lifestyle</option>
                                 <option value="Others">Others</option>
                             </select>
