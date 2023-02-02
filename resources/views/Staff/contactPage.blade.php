@@ -36,7 +36,7 @@ if (Session::has('firebaseUserId') && Session::has('idToken'))
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        Book List
+                        Customer Messages
                         {{-- <div class="float-end">
                             <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
                                 data-bs-target="#add-modal">Add Book</button>
@@ -51,7 +51,6 @@ if (Session::has('firebaseUserId') && Session::has('idToken'))
                                     <th scope="col">Email</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Messages</th>
-                                    <th scope="col">Publisher</th>
                                     <th scope="col">Date and Time</th>
                                     {{-- <th scope="col">Store</th>
                                     <th scope="col">Category</th>
@@ -92,18 +91,17 @@ if (Session::has('firebaseUserId') && Session::has('idToken'))
         var lastId = 0;
 
         // get post data
-        database.ref("books").on('value', function(snapshot) {
+        database.ref("contacts").on('value', function(snapshot) {
             var value = snapshot.val();
             var htmls = [];
             $.each(value, function(index, value) {
                 if (value) {
                     htmls.push('<tr>\
                                 <td>' + index + '</td>\
-                                <td>' + value.isbn + '</td>\
-                                <td>' + value.title + '</td>\
-                                <td>' + value.language + '</td>\
-                                <td>' + value.publisher + '</td>\
-                                <td>' + value.price + '</td>\
+                                <td>' + value.email + '</td>\
+                                <td>' + value.name + '</td>\
+                                <td>' + value.messages + '</td>\
+                                <td>' + value.datetime + '</td>\
                                 <td>\
                                 </td>\
                             </tr>');
@@ -114,27 +112,27 @@ if (Session::has('firebaseUserId') && Session::has('idToken'))
         });
 
         // -----------------------add data----------------------------------
-        $('#add-submit').on('click', function() {
-            var formData = $('#add-post').serializeArray();
-            var createId = Number(lastId) + 1;
+        // $('#add-submit').on('click', function() {
+        //     var formData = $('#add-post').serializeArray();
+        //     var createId = Number(lastId) + 1;
 
-            firebase.database().ref('books/' + createId).set({
-                isbn: formData[0].value,
-                title: formData[1].value,
-                language: formData[2].value,
-                publisher: formData[3].value,
-                price: formData[4].value,
-                store: formData[5].value,
-                summary: formData[6].value,
-                category: formData[7].value,
-                stock: formData[8].value,
-            });
+        //     firebase.database().ref('books/' + createId).set({
+        //         isbn: formData[0].value,
+        //         title: formData[1].value,
+        //         language: formData[2].value,
+        //         publisher: formData[3].value,
+        //         price: formData[4].value,
+        //         store: formData[5].value,
+        //         summary: formData[6].value,
+        //         category: formData[7].value,
+        //         stock: formData[8].value,
+        //     });
 
-            // Reassign lastID value
-            lastId = createId;
-            $("#add-post")[0].reset();
-            $("#add-modal").modal('hide');
-        });
+        //     // Reassign lastID value
+        //     lastId = createId;
+        //     $("#add-post")[0].reset();
+        //     $("#add-modal").modal('hide');
+        // });
     </script>
 </body>
 
