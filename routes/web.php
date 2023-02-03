@@ -38,9 +38,7 @@ Route::get('adminHome', function () {return view('Admin.home');});
 
 //Display book for one category
 Route::get('books', function () {return view('Staff.displayBooks');});
-
 // display, update, delete
 Route::get('manageBook', [FirebaseController::class, 'index'])->name('post.inedx');
-
 // Contact Page
 Route::get('contact', function () {return view('Staff.contactPage');});

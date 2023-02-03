@@ -1,3 +1,11 @@
+<?php
+if (Session::has('firebaseUserId') && Session::has('idToken')) {
+    // dd("User masih login.");
+} else {
+    dd('User sudah logout.');
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +13,7 @@
 <style>
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: black;
+  background-color: white;
 }
 
 * {
@@ -14,12 +22,13 @@ body {
 
 /* Add padding to containers */
 .container {
+  margin-top: 50px;
   padding: 16px;
   background-color: white;
 }
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
+input[type=email], input[type=password] {
   width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
@@ -28,7 +37,7 @@ input[type=text], input[type=password] {
   background: #f1f1f1;
 }
 
-input[type=text]:focus, input[type=password]:focus {
+input[type=email]:focus, input[type=password]:focus {
   background-color: #ddd;
   outline: none;
 }
@@ -66,13 +75,17 @@ a {
   text-align: center;
 }
 </style>
+
+@include('Admin.navBar')
+@include('Admin.homeCss')
+
 </head>
 <body>
 
 <form action="/register" method="post">
     @csrf
   <div class="container">
-    <h1>Register</h1>
+    <h1>Register Staff</h1>
     <p>Please fill in this form to create an account.</p>
     <hr>
 

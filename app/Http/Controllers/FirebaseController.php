@@ -46,7 +46,7 @@ class FirebaseController extends Controller
 
         try {
             $newUser = $this->auth->createUserWithEmailAndPassword($email, $pass);
-            dd($newUser);
+            // dd($newUser);
         } catch (\Throwable $e) {
             switch ($e->getMessage()) {
                 case 'The email address is already in use by another account.':
@@ -60,6 +60,8 @@ class FirebaseController extends Controller
                     break;
             }
         }
+
+        return redirect("/adminHome");  
     }
 
     public function signIn(Request $req){

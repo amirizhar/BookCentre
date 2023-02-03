@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>Book Centre | Book Categories</title>
+<title>Book Centre | Administrator</title>
 <meta charset="UTF-8">
 
 <?php
@@ -12,8 +12,8 @@ if (Session::has('firebaseUserId') && Session::has('idToken')) {
 ?>
 
 <head>
-    @include('Staff.navBar')
-    @include('Staff.homeCss')
+    @include('Admin.navBar')
+    @include('Admin.homeCss')
 </head>
 
 <body>
