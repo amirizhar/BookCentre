@@ -31,6 +31,7 @@ Route::get('check', [FirebaseController::class, 'userCheck']);
 //Registration
 Route::get('userRegister', function () {return view('Admin.register');});
 Route::post('register', [FirebaseController::class, 'signUp']);
+Route::get('adminHome', function () {return view('Admin.home');});
 
 
 // ---------------------------------Staff---------------------------------

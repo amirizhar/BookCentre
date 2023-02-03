@@ -89,7 +89,12 @@ class FirebaseController extends Controller
             }
         }
 
-        return redirect("/home");
+        if($signInResult->firebaseUserId() == 'RUlLjB8OC1Nzbv3dxJ8cLxF2WsT2'){
+            return redirect("/adminHome");
+        }
+        else{
+            return redirect("/home");   
+        }
     }
 
     public function signOut(){
