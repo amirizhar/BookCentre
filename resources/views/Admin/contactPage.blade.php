@@ -110,29 +110,6 @@ if (Session::has('firebaseUserId') && Session::has('idToken'))
             });
             $('#table-list').html(htmls);
         });
-
-        // -----------------------add data----------------------------------
-        // $('#add-submit').on('click', function() {
-        //     var formData = $('#add-post').serializeArray();
-        //     var createId = Number(lastId) + 1;
-
-        //     firebase.database().ref('books/' + createId).set({
-        //         isbn: formData[0].value,
-        //         title: formData[1].value,
-        //         language: formData[2].value,
-        //         publisher: formData[3].value,
-        //         price: formData[4].value,
-        //         store: formData[5].value,
-        //         summary: formData[6].value,
-        //         category: formData[7].value,
-        //         stock: formData[8].value,
-        //     });
-
-        //     // Reassign lastID value
-        //     lastId = createId;
-        //     $("#add-post")[0].reset();
-        //     $("#add-modal").modal('hide');
-        // });
     </script>
 </body>
 

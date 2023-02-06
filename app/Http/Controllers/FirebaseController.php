@@ -1,5 +1,5 @@
 <?php
- 
+
 namespace App\Http\Controllers;
 
 use Faker\Factory as FakerFactory;
@@ -22,32 +22,51 @@ class FirebaseController extends Controller
     public function __construct()
     {
         $factory = (new Factory)
-        ->withServiceAccount(__DIR__.'/bookcentre-21891-firebase-adminsdk-v567n-db0cfdaa64.json')
-        ->withDatabaseUri('https://bookcentre-21891-default-rtdb.asia-southeast1.firebasedatabase.app/');
+            ->withServiceAccount(__DIR__ . '/bookcentre-21891-firebase-adminsdk-v567n-db0cfdaa64.json')
+            ->withDatabaseUri('https://bookcentre-21891-default-rtdb.asia-southeast1.firebasedatabase.app/');
 
         $this->auth = $factory->createAuth();
         $this->database = $factory->createDatabase();
     }
 
     // fetch all users from firebase
-    public function getUser(){
+    public function getUser()
+    {
 
         $firebase = (new Factory)
-        ->withServiceAccount(__DIR__.'/bookcentre-21891-firebase-adminsdk-v567n-db0cfdaa64.json')
-        ->withDatabaseUri('https://bookcentre-21891-default-rtdb.asia-southeast1.firebasedatabase.app/');
-        
+            ->withServiceAccount(__DIR__ . '/bookcentre-21891-firebase-adminsdk-v567n-db0cfdaa64.json')
+            ->withDatabaseUri('https://bookcentre-21891-default-rtdb.asia-southeast1.firebasedatabase.app/');
+
         $users = $this->auth->listUsers($defaultMaxResults = 300, $defaultBatchSize = 1000);
 
-        return view ('Admin.bookstoreStaff', ['senarai'=>$users]);
-        
+        return view('Admin.bookstoreStaff', ['senarai' => $users]);
     }
+
+    //Delete user in firebase
+    // public function deleteUser()
+    // {
+    //     // Include the firebase library
+    //     require 'firebaseLib.php';
+
+    //     // Define your Firebase URL here
+    //     $url = 'https://example.firebaseio.com/';
+
+    //     // Define your Firebase Secret here (You can find it in your Firebase Console)
+    //     $secret = '<your-secret>';
+
+    //     // Create a new Firebase Instance
+    //     $fb = new fireBase($url, $secret);
+
+    //     // Delete user from firebase with the key "user1" 
+    //     $fb->delete('users/user1');
+    // }
 
 
     public function index()
     {
         $factory = (new Factory)
-        ->withServiceAccount(__DIR__.'/bookcentre-21891-firebase-adminsdk-v567n-db0cfdaa64.json')
-        ->withDatabaseUri('https://bookcentre-21891-default-rtdb.asia-southeast1.firebasedatabase.app/');
+            ->withServiceAccount(__DIR__ . '/bookcentre-21891-firebase-adminsdk-v567n-db0cfdaa64.json')
+            ->withDatabaseUri('https://bookcentre-21891-default-rtdb.asia-southeast1.firebasedatabase.app/');
 
         $this->database = $factory->createDatabase();
 
@@ -57,8 +76,8 @@ class FirebaseController extends Controller
     public function adminView()
     {
         $factory = (new Factory)
-        ->withServiceAccount(__DIR__.'/bookcentre-21891-firebase-adminsdk-v567n-db0cfdaa64.json')
-        ->withDatabaseUri('https://bookcentre-21891-default-rtdb.asia-southeast1.firebasedatabase.app/');
+            ->withServiceAccount(__DIR__ . '/bookcentre-21891-firebase-adminsdk-v567n-db0cfdaa64.json')
+            ->withDatabaseUri('https://bookcentre-21891-default-rtdb.asia-southeast1.firebasedatabase.app/');
 
         $this->database = $factory->createDatabase();
 
@@ -87,10 +106,11 @@ class FirebaseController extends Controller
             }
         }
 
-        return redirect("/adminHome");  
+        return redirect("/adminHome");
     }
 
-    public function signIn(Request $req){
+    public function signIn(Request $req)
+    {
         $email = $req->email;
         $pass = $req->password;
 
@@ -117,15 +137,15 @@ class FirebaseController extends Controller
             }
         }
 
-        if($signInResult->firebaseUserId() == 'RUlLjB8OC1Nzbv3dxJ8cLxF2WsT2'){
+        if ($signInResult->firebaseUserId() == 'RUlLjB8OC1Nzbv3dxJ8cLxF2WsT2') {
             return redirect("/adminHome");
-        }
-        else{
-            return redirect("/home");   
+        } else {
+            return redirect("/home");
         }
     }
 
-    public function signOut(){
+    public function signOut()
+    {
         if (Session::has('firebaseUserId') && Session::has('idToken')) {
             // dd("User masih login.");
             $this->auth->revokeRefreshTokens(Session::get('firebaseUserId'));
@@ -134,20 +154,19 @@ class FirebaseController extends Controller
             Session::save();
 
             return redirect("/");
-            
         } else {
             // dd("User belum login.");
         }
         return redirect("/");
     }
 
-    public function userCheck()    {
+    public function userCheck()
+    {
         // $idToken = "eyJhbGciOiJSUzI1NiIsImtpZCI6ImQwNTU5YzU5MDgzZDc3YWI2NDUxOThiNTIxZmM4ZmVmZmVlZmJkNjIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vYm9va2NlbnRyZS0yMTg5MSIsImF1ZCI6ImJvb2tjZW50cmUtMjE4OTEiLCJhdXRoX3RpbWUiOjE2NzQ4MzE0ODQsInVzZXJfaWQiOiJnN3VxMmk5NVJuWE84YjVFdkFyeHBTZklMVFQyIiwic3ViIjoiZzd1cTJpOTVSblhPOGI1RXZBcnhwU2ZJTFRUMiIsImlhdCI6MTY3NDgzMTQ4NCwiZXhwIjoxNjc0ODM1MDg0LCJlbWFpbCI6ImFtaXJfaXpoYXJAeWFob28uY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImFtaXJfaXpoYXJAeWFob28uY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.cSGS5SikyruyyT_zaPbI4dYzQ5F_btTzL0iPinfsztx4x3t93C4pxy1kjqMbP7lAapXmRO341gHnxv8egATMuAIs_K8kHc0HBhwYJbVHkTaV92x8xc8U7k7T1THqfXMBpfyhmxfdWqxvMYMchx0VqPP7D7viidJvfGt1ElVsa7_3KvB2nIW6ZrBlCcufeAOoN7rhYT8wedeD6zwHaPtZ9KjDig3qNuGXmKH6pFLFyPyhInRYTynFM-lCNVLbXEoRZSuyn3e1emQDew0gzvMouzmmJk6wqbvZQaObFf7MJu0GcbJTBez2_zc93LE_XUqJMk-JyuTdTtWj5ZKhQQZp8w";
 
         // $this->auth->revokeRefreshTokens("g7uq2i95RnXO8b5EvArxpSfILTT2");
 
-        if (Session::has('firebaseUserId') && Session::has('idToken')) 
-        {
+        if (Session::has('firebaseUserId') && Session::has('idToken')) {
             dd("User masih login.");
         } else {
             dd("User sudah logout.");
@@ -191,5 +210,4 @@ class FirebaseController extends Controller
         // }
         // return $response;
     }
-
 }
