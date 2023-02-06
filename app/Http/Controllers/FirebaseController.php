@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use Kreait\Firebase;
 use Kreait\Firebase\Factory;
 use Illuminate\Support\Facades\Session;
-use Kreait\Firebase\Auth;
+use Kreait\Firebase\Auth\UserRecord;
+use Kreait\Firebase\auth;
 use Firebase\Auth\Token\Exception\InvalidToken;
 use Kreait\Firebase\Exception\Auth\RevokedIdToken;
 
@@ -28,6 +29,20 @@ class FirebaseController extends Controller
         $this->database = $factory->createDatabase();
     }
 
+    // fetch all users from firebase
+    public function getUser(){
+
+        $firebase = (new Factory)
+        ->withServiceAccount(__DIR__.'/bookcentre-21891-firebase-adminsdk-v567n-db0cfdaa64.json')
+        ->withDatabaseUri('https://bookcentre-21891-default-rtdb.asia-southeast1.firebasedatabase.app/');
+        
+        $users = $this->auth->listUsers($defaultMaxResults = 300, $defaultBatchSize = 1000);
+
+        return view ('Admin.contactPage', ['senarai'=>$users]);
+        
+    }
+
+
     public function index()
     {
         $factory = (new Factory)
@@ -37,6 +52,17 @@ class FirebaseController extends Controller
         $this->database = $factory->createDatabase();
 
         return view('Staff.index');
+    }
+
+    public function adminView()
+    {
+        $factory = (new Factory)
+        ->withServiceAccount(__DIR__.'/bookcentre-21891-firebase-adminsdk-v567n-db0cfdaa64.json')
+        ->withDatabaseUri('https://bookcentre-21891-default-rtdb.asia-southeast1.firebasedatabase.app/');
+
+        $this->database = $factory->createDatabase();
+
+        return view('Admin.index');
     }
 
     public function signUp(Request $req)

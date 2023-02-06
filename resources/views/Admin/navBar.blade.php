@@ -19,9 +19,9 @@ if (Session::has('firebaseUserId') && Session::has('idToken'))
 
             <ul>
                 <li><a href="logout">Logout</a></li>
-                <li><a href="userRegister">Bookstore</a></li>
+                <li><a href="users">Bookstore</a></li>
                 <li><a href="">Contact</a></li>
-                <li><a href="">Book</a></li>
+                <li><a href="adminBook">Book</a></li>
         </div>
         </li>
         </ul>
