@@ -32,6 +32,7 @@ Route::post('register', [FirebaseController::class, 'signUp']);
 Route::get('adminHome', function () {return view('Admin.home');});
 Route::get('users', [FirebaseController::class, 'getUser']);
 Route::get('adminBook', [FirebaseController::class, 'adminView'])->name('post.inedx');
+Route::get('adminContact', function () {return view('Admin.contactPage');});
 
 // ---------------------------------Staff---------------------------------
 

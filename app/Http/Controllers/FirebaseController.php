@@ -38,7 +38,7 @@ class FirebaseController extends Controller
         
         $users = $this->auth->listUsers($defaultMaxResults = 300, $defaultBatchSize = 1000);
 
-        return view ('Admin.contactPage', ['senarai'=>$users]);
+        return view ('Admin.bookstoreStaff', ['senarai'=>$users]);
         
     }
 
