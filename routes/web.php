@@ -19,10 +19,8 @@ use App\Http\Controllers\PostController;
 Route::get('/', function () {return view('Login.login');});
 Route::post('login', [FirebaseController::class, 'signIn']);
 Route::get('home', function () {return view('Staff.home');});
-
 //Logout
 Route::get('logout', [FirebaseController::class, 'signOut']);
-
 //CheckSession
 Route::get('check', [FirebaseController::class, 'userCheck']);
 
@@ -33,14 +31,12 @@ Route::get('userRegister', function () {return view('Admin.register');});
 Route::post('register', [FirebaseController::class, 'signUp']);
 Route::get('adminHome', function () {return view('Admin.home');});
 Route::get('users', [FirebaseController::class, 'getUser']);
-
 Route::get('adminBook', [FirebaseController::class, 'adminView'])->name('post.inedx');
-
 
 // ---------------------------------Staff---------------------------------
 
 //Display book for one category
-// Route::get('books', function () {return view('Staff.displayBooks');});
+Route::get('books', function () {return view('Staff.displayBooks');});
 // display, update, delete
 Route::get('manageBook', [FirebaseController::class, 'index'])->name('post.inedx');
 // Contact Page
