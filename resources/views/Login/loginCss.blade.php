@@ -13,7 +13,7 @@
     html {
         font-family: 'Source Sans Pro', sans-serif;
         background-color: #1d243d;
-        background-image: url('assets/Images/book1.jpeg');
+        /* background-image: url('assets/Images/book1.jpeg'); */
         padding: 0;
         margin: 0;
     }
