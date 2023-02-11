@@ -112,17 +112,17 @@ if (Session::has('firebaseUserId') && Session::has('idToken')) {
                         if (Session::get('firebaseUserId') == $mph) {
                             echo '<div class="mb-3" hidden>';
                             echo '<label for="store" class="form-label">Store</label>';
-                            echo '<input type="text" class="form-control" id="store" name="store" value="mph">';
+                            echo '<input type="text" class="form-control" id="store" name="store" value="CIqF4dqDMsPETn5dkw1LE9UDy322">';
                             echo '</div>';
                         } elseif (Session::get('firebaseUserId') == $popular) {
                             echo '<div class="mb-3" hidden>';
                             echo '<label for="store" class="form-label">Store</label>';
-                            echo '<input type="text" class="form-control" id="store" name="store" value="popular">';
+                            echo '<input type="text" class="form-control" id="store" name="store" value="hoiuhbXr5mgOuPPm8WuDPAmc3843">';
                             echo '</div>';
                         } elseif (Session::get('firebaseUserId') == $kinokuniya) {
                             echo '<div class="mb-3" hidden>';
                             echo '<label for="store" class="form-label">Store</label>';
-                            echo '<input type="text" class="form-control" id="store" name="store" value="kinokuniya">';
+                            echo '<input type="text" class="form-control" id="store" name="store" value="Bx4DBsutciaTExDiFob6TUOJg9y1">';
                             echo '</div>';
                         } else {
                             echo 'Please Login to an account';
@@ -337,28 +337,43 @@ if (Session::has('firebaseUserId') && Session::has('idToken')) {
 
         // get post data
         database.ref("books").on('value', function(snapshot) {
+
+            // $mph = 'CIqF4dqDMsPETn5dkw1LE9UDy322';
+            // $popular = 'hoiuhbXr5mgOuPPm8WuDPAmc3843';
+            // $kinokuniya = 'Bx4DBsutciaTExDiFob6TUOJg9y1';
+
+            // $database = firebase.database();
+            
+            // $store = database . ref('books');
+            // $query = $store->where('store', '=', $mph);
+            // $snapshot = $query->documents();
+            // foreach ($snapshot as $document) {
+            //     printf('Document %s returned by query state=CA' . PHP_EOL, $document->id());
+            // }
+            // query_filter_eq_string . php;
+
             var value = snapshot.val();
             var htmls = [];
             $.each(value, function(index, value) {
                 if (value) {
                     htmls.push('<tr>\
-                                                <td>' + index + '</td>\
-                                                <td>' + value.isbn + '</td>\
-                                                <td>' + value.title + '</td>\
-                                                <td>' + value.language + '</td>\
-                                                <td>' + value.publisher + '</td>\
-                                                <td> RM' + value.price + '</td>\
-                                                <td>' + value.store + '</td>\
-                                                <td>' + value.category + '</td>\
-                                                <td>' + value.stock + '</td>\
-                                                <td style="text-align:justify;">' + value.summary +
+                                                                <td>' + index + '</td>\
+                                                                <td>' + value.isbn + '</td>\
+                                                                <td>' + value.title + '</td>\
+                                                                <td>' + value.language + '</td>\
+                                                                <td>' + value.publisher + '</td>\
+                                                                <td> RM' + value.price + '</td>\
+                                                                <td>' + value.store + '</td>\
+                                                                <td>' + value.category + '</td>\
+                                                                <td>' + value.stock + '</td>\
+                                                                <td style="text-align:justify;">' + value.summary +
                         '</td>\
-                                                <td><a data-bs-toggle="modal" data-bs-target="#update-modal" class="btn btn-success update-post" data-id="' +
+                                                                <td><a data-bs-toggle="modal" data-bs-target="#update-modal" class="btn btn-success update-post" data-id="' +
                         index +
                         '">Update</a>\
-                                                <a data-bs-toggle="modal" data-bs-target="#delete-modal" class="btn btn-danger delete-data" data-id="' +
+                                                                <a data-bs-toggle="modal" data-bs-target="#delete-modal" class="btn btn-danger delete-data" data-id="' +
                         index + '">Delete</a></td>\
-                                            </tr>');
+                                                            </tr>');
                 }
                 lastId = index;
             });
