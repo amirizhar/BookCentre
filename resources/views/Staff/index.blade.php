@@ -57,8 +57,9 @@ if (Session::has('firebaseUserId') && Session::has('idToken')) {
                                 </tr>
                             </thead>
                             <tbody id="table-list">
-
                             </tbody>
+
+
                         </table>
                     </div>
                 </div>
@@ -335,33 +336,50 @@ if (Session::has('firebaseUserId') && Session::has('idToken')) {
 
         var lastId = 0;
 
+        <?php
+        $sesi = Session::get('firebaseUserId');
+        ?>
+
+        var session = 
+        '<?php 
+        echo $sesi; 
+        ?>';
+
+        var mph = 'CIqF4dqDMsPETn5dkw1LE9UDy322';
+        // var popular = 'hoiuhbXr5mgOuPPm8WuDPAmc3843';  
+        // var kinokuniya = 'Bx4DBsutciaTExDiFob6TUOJg9y1';
+
         // get post data
         database.ref("books").on('value', function(snapshot) {
             var value = snapshot.val();
             var htmls = [];
             $.each(value, function(index, value) {
                 if (value) {
-                    htmls.push('<tr>\
-                                                                <td>' + index + '</td>\
-                                                                <td>' + value.isbn + '</td>\
-                                                                <td>' + value.title + '</td>\
-                                                                <td>' + value.language + '</td>\
-                                                                <td>' + value.publisher + '</td>\
-                                                                <td> RM' + value.price + '</td>\
-                                                                <td>' + value.store + '</td>\
-                                                                <td>' + value.category + '</td>\
-                                                                <td>' + value.stock + '</td>\
-                                                                <td style="text-align:justify;">' + value.summary +
-                        '</td>\
-                                                                <td><a data-bs-toggle="modal" data-bs-target="#update-modal" class="btn btn-success update-post" data-id="' +
-                        index +
-                        '">Update</a>\
-                                                                <a data-bs-toggle="modal" data-bs-target="#delete-modal" class="btn btn-danger delete-data" data-id="' +
-                        index + '">Delete</a></td>\
-                                                            </tr>');
+                    if (
+                        session == value.store) {
+                        htmls.push('<tr>\
+                                                                    <td>' + index + '</td>\
+                                                                    <td>' + value.isbn + '</td>\
+                                                                    <td>' + value.title + '</td>\
+                                                                    <td>' + value.language + '</td>\
+                                                                    <td>' + value.publisher + '</td>\
+                                                                    <td> RM' + value.price + '</td>\
+                                                                    <td>' + value.store + '</td>\
+                                                                    <td>' + value.category + '</td>\
+                                                                    <td>' + value.stock + '</td>\
+                                                                    <td style="text-align:justify;">' + value.summary +
+                            '</td>\
+                                                                    <td><a data-bs-toggle="modal" data-bs-target="#update-modal" class="btn btn-success update-post" data-id="' +
+                            index +
+                            '">Update</a>\
+                                                                    <a data-bs-toggle="modal" data-bs-target="#delete-modal" class="btn btn-danger delete-data" data-id="' +
+                            index + '">Delete</a></td>\
+                                                                </tr>');
+                    }
                 }
                 lastId = index;
             });
+
             $('#table-list').html(htmls);
         });
 
