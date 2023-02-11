@@ -337,21 +337,6 @@ if (Session::has('firebaseUserId') && Session::has('idToken')) {
 
         // get post data
         database.ref("books").on('value', function(snapshot) {
-
-            // $mph = 'CIqF4dqDMsPETn5dkw1LE9UDy322';
-            // $popular = 'hoiuhbXr5mgOuPPm8WuDPAmc3843';
-            // $kinokuniya = 'Bx4DBsutciaTExDiFob6TUOJg9y1';
-
-            // $database = firebase.database();
-            
-            // $store = database . ref('books');
-            // $query = $store->where('store', '=', $mph);
-            // $snapshot = $query->documents();
-            // foreach ($snapshot as $document) {
-            //     printf('Document %s returned by query state=CA' . PHP_EOL, $document->id());
-            // }
-            // query_filter_eq_string . php;
-
             var value = snapshot.val();
             var htmls = [];
             $.each(value, function(index, value) {
