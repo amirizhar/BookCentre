@@ -15,7 +15,7 @@
 
 <body id="particles-js"></body>
 <div class="animated bounceInDown">
-    <div class="container">
+    <div  class="container">
         <span class="error animated tada" id="msg"></span>
         <form action="/login" method="post" class="box">
             @csrf
@@ -42,9 +42,8 @@
 
     {{-- --------------------footer -------------------- --}}
     <div class="footer">
-        <span>Contact <br><i class="fa fa-heart pulse"></i> <a
-                href="https://www.google.de/maps/place/Augsburger+Puppenkiste/@48.360357,10.903245,17z/data=!3m1!4b1!4m2!3m1!1s0x479e98006610a511:0x73ac6b9f80c4048f"><a
-                    href="https://codepen.io/lordgamer2354">Admin of the system</a></span>
+        <span>Contact <br><i class="fa fa-heart pulse"></i> <a href="https://www.google.de/maps/place/Augsburger+Puppenkiste/@48.360357,10.903245,17z/data=!3m1!4b1!4m2!3m1!1s0x479e98006610a511:0x73ac6b9f80c4048f"><a
+        href="contact-admin">System Sevice Provider Administrator</a></span>
     </div>
 </div>
 

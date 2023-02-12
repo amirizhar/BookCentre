@@ -19,6 +19,7 @@ use App\Http\Controllers\PostController;
 Route::get('/', function () {return view('Login.login');});
 Route::post('login', [FirebaseController::class, 'signIn']);
 Route::get('home', function () {return view('Staff.home');});
+Route::get('contact-admin', function () {return view('Login.contactAdmin');});
 //Logout
 Route::get('logout', [FirebaseController::class, 'signOut']);
 //CheckSession
