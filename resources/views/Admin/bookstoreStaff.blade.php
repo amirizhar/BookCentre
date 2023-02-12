@@ -57,7 +57,8 @@ if (Session::has('firebaseUserId') && Session::has('idToken')) {
                                         <td>{{ $x->uid }}</td>
                                         <td>{{ $x->email }}</td>
                                         <td>
-                                            <button type="button" id="delete-button" class="btn btn-primary">Delete</button>
+                                            <button><a  type="button" id="delete-button" class="btn btn-primary" href="{{ "resetPassword/".$x->email }}">Reset Password</a></button>
+                                            {{-- <button type="button" id="delete-button" class="btn btn-primary">Reset Password</button> --}}
                                         <td>
                                     </tr>
                                 @endforeach

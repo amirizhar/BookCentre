@@ -42,25 +42,20 @@ class FirebaseController extends Controller
         return view('Admin.bookstoreStaff', ['senarai' => $users]);
     }
 
-    //Delete user in firebase
-    // public function deleteUser()
-    // {
-    //     // Include the firebase library
-    //     require 'firebaseLib.php';
+    //Reset Password
+    public function resetPassword($email)
+    {
 
-    //     // Define your Firebase URL here
-    //     $url = 'https://example.firebaseio.com/';
+        $firebase = (new Factory)
+            ->withServiceAccount(__DIR__ . '/bookcentre-21891-firebase-adminsdk-v567n-db0cfdaa64.json')
+            ->withDatabaseUri('https://bookcentre-21891-default-rtdb.asia-southeast1.firebasedatabase.app/');
 
-    //     // Define your Firebase Secret here (You can find it in your Firebase Console)
-    //     $secret = '<your-secret>';
+        $email = $email;
+        $link = $this->auth->getPasswordResetLink($email);
+        $this->auth->sendPasswordResetLink($email);
 
-    //     // Create a new Firebase Instance
-    //     $fb = new fireBase($url, $secret);
-
-    //     // Delete user from firebase with the key "user1" 
-    //     $fb->delete('users/user1');
-    // }
-
+        return redirect('users');
+    }
 
     public function index()
     {
@@ -160,6 +155,25 @@ class FirebaseController extends Controller
         return redirect("/");
     }
 
+    //Delete user in firebase
+    // public function deleteUser()
+    // {
+    //     // Include the firebase library
+    //     require 'firebaseLib.php';
+
+    //     // Define your Firebase URL here
+    //     $url = 'https://example.firebaseio.com/';
+
+    //     // Define your Firebase Secret here (You can find it in your Firebase Console)
+    //     $secret = '<your-secret>';
+
+    //     // Create a new Firebase Instance
+    //     $fb = new fireBase($url, $secret);
+
+    //     // Delete user from firebase with the key "user1" 
+    //     $fb->delete('users/user1');
+    // }
+
     public function userCheck()
     {
         // $idToken = "eyJhbGciOiJSUzI1NiIsImtpZCI6ImQwNTU5YzU5MDgzZDc3YWI2NDUxOThiNTIxZmM4ZmVmZmVlZmJkNjIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vYm9va2NlbnRyZS0yMTg5MSIsImF1ZCI6ImJvb2tjZW50cmUtMjE4OTEiLCJhdXRoX3RpbWUiOjE2NzQ4MzE0ODQsInVzZXJfaWQiOiJnN3VxMmk5NVJuWE84YjVFdkFyeHBTZklMVFQyIiwic3ViIjoiZzd1cTJpOTVSblhPOGI1RXZBcnhwU2ZJTFRUMiIsImlhdCI6MTY3NDgzMTQ4NCwiZXhwIjoxNjc0ODM1MDg0LCJlbWFpbCI6ImFtaXJfaXpoYXJAeWFob28uY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImFtaXJfaXpoYXJAeWFob28uY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.cSGS5SikyruyyT_zaPbI4dYzQ5F_btTzL0iPinfsztx4x3t93C4pxy1kjqMbP7lAapXmRO341gHnxv8egATMuAIs_K8kHc0HBhwYJbVHkTaV92x8xc8U7k7T1THqfXMBpfyhmxfdWqxvMYMchx0VqPP7D7viidJvfGt1ElVsa7_3KvB2nIW6ZrBlCcufeAOoN7rhYT8wedeD6zwHaPtZ9KjDig3qNuGXmKH6pFLFyPyhInRYTynFM-lCNVLbXEoRZSuyn3e1emQDew0gzvMouzmmJk6wqbvZQaObFf7MJu0GcbJTBez2_zc93LE_XUqJMk-JyuTdTtWj5ZKhQQZp8w";
@@ -171,7 +185,6 @@ class FirebaseController extends Controller
         } else {
             dd("User sudah logout.");
         }
-
         // try {
         //     $verifiedIdToken = $this->auth->verifyIdToken($idToken, $checkIfRevoked = true);
         //     dump($verifiedIdToken);

@@ -28,11 +28,12 @@ Route::get('check', [FirebaseController::class, 'userCheck']);
 
 //Registration
 Route::get('userRegister', function () {return view('Admin.register');});
-Route::post('register', [FirebaseController::class, 'signUp']);
 Route::get('adminHome', function () {return view('Admin.home');});
+Route::get('adminContact', function () {return view('Admin.contactPage');});
+Route::post('register', [FirebaseController::class, 'signUp']);
 Route::get('users', [FirebaseController::class, 'getUser']);
 Route::get('adminBook', [FirebaseController::class, 'adminView'])->name('post.inedx');
-Route::get('adminContact', function () {return view('Admin.contactPage');});
+Route::get('resetPassword/{email}', [FirebaseController::class, 'resetPassword']);
 
 // ---------------------------------Staff---------------------------------
 
