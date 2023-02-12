@@ -2,11 +2,10 @@
 
 <?php
 
-if (Session::has('firebaseUserId') && Session::has('idToken')) 
-{
+if (Session::has('firebaseUserId') && Session::has('idToken')) {
     // dd("User masih login.");
 } else {
-    dd("User sudah logout.");
+    dd('User sudah logout.');
 }
 ?>
 
@@ -16,16 +15,16 @@ if (Session::has('firebaseUserId') && Session::has('idToken'))
 <head>
     <meta charset="utf-8">
     <title>Book Centre | <?php $category = @$_GET['value'];
-    echo $category ?>
+    echo $category; ?>
     </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <style>
-  .container {
-    margin-top: 70px;
-  }
+    .container {
+        margin-top: 70px;
+    }
 </style>
 
 <body>
@@ -73,7 +72,9 @@ if (Session::has('firebaseUserId') && Session::has('idToken'))
 
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-database.js"></script>
-    <script> category = "<?php echo $category; ?>";</script>
+    <script>
+        category = "<?php echo $category; ?>";
+    </script>
 
     <script type="text/javascript">
         // Your web app's Firebase configuration
@@ -92,6 +93,14 @@ if (Session::has('firebaseUserId') && Session::has('idToken'))
         var database = firebase.database();
         var lastId = 0;
 
+        <?php
+        $sesi = Session::get('firebaseUserId');
+        ?>
+        var session =
+            '<?php
+            echo $sesi;
+            ?>';
+
 
         // get post data
         database.ref("books").on('value', function(snapshot) {
@@ -99,25 +108,26 @@ if (Session::has('firebaseUserId') && Session::has('idToken'))
             var htmls = [];
             $.each(value, function(index, value) {
                 if (value) {
-                    if(value.category == category){
-                    htmls.push('<tr>\
-                                <td>' + index + '</td>\
-                                <td>' + value.isbn + '</td>\
-                                <td>' + value.title + '</td>\
-                                <td>' + value.language + '</td>\
-                                <td>' + value.publisher + '</td>\
-                                <td>' + value.price + '</td>\
-                                <td>' + value.store + '</td>\
-                                <td>' + value.stock + '</td>\
-                                <td style="text-align:justify;">' + value.summary +'</td>\
-                            </tr>');
+                    if (session == value.store) {
+                        if (value.category == category) {
+                            htmls.push('<tr>\
+                                    <td>' + index + '</td>\
+                                    <td>' + value.isbn + '</td>\
+                                    <td>' + value.title + '</td>\
+                                    <td>' + value.language + '</td>\
+                                    <td>' + value.publisher + '</td>\
+                                    <td>' + value.price + '</td>\
+                                    <td>' + value.store + '</td>\
+                                    <td>' + value.stock + '</td>\
+                                    <td style="text-align:justify;">' + value.summary + '</td>\
+                                </tr>');
                         }
+                    }
                 }
                 lastId = index;
             });
             $('#table-list').html(htmls);
         });
-
     </script>
 </body>
 

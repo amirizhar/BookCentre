@@ -345,18 +345,13 @@ if (Session::has('firebaseUserId') && Session::has('idToken')) {
         echo $sesi; 
         ?>';
 
-        var mph = 'CIqF4dqDMsPETn5dkw1LE9UDy322';
-        // var popular = 'hoiuhbXr5mgOuPPm8WuDPAmc3843';  
-        // var kinokuniya = 'Bx4DBsutciaTExDiFob6TUOJg9y1';
-
         // get post data
         database.ref("books").on('value', function(snapshot) {
             var value = snapshot.val();
             var htmls = [];
             $.each(value, function(index, value) {
                 if (value) {
-                    if (
-                        session == value.store) {
+                    if (session == value.store) {
                         htmls.push('<tr>\
                                                                     <td>' + index + '</td>\
                                                                     <td>' + value.isbn + '</td>\
