@@ -34,6 +34,7 @@ Route::post('register', [FirebaseController::class, 'signUp']);
 Route::get('users', [FirebaseController::class, 'getUser']);
 Route::get('adminBook', [FirebaseController::class, 'adminView'])->name('post.inedx');
 Route::get('resetPassword/{email}', [FirebaseController::class, 'resetPassword']);
+Route::get('admin-books', function () {return view('Admin.displayBooks');});
 
 // ---------------------------------Staff---------------------------------
 
