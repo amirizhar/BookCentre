@@ -106,24 +106,46 @@ if (Session::has('firebaseUserId') && Session::has('idToken')) {
 
 
                         <?php
-                        $mph = 'CIqF4dqDMsPETn5dkw1LE9UDy322';
-                        $popular = 'hoiuhbXr5mgOuPPm8WuDPAmc3843';
-                        $kinokuniya = 'Bx4DBsutciaTExDiFob6TUOJg9y1';
                         
-                        if (Session::get('firebaseUserId') == $mph) {
+                        // mph
+                        $mph1 = 'CIqF4dqDMsPETn5dkw1LE9UDy322';
+                        $mph2 = 'vCw4TwpJaFSsrF3JqQKe4nN4KFV2';
+                        $mph3 = 'YU0mSMpimFXAAj5hZusJfyO21Lt2';
+                        $mph4 = 'Zil8H0fMHJWraF0NivYZIL18dGn2';
+                        $mph5 = 'YXhYZaVu0xP757sGf6FTliFBSVd2';
+                        
+                        // kinokuniya
+                        $kinokuniya1 = 'Bx4DBsutciaTExDiFob6TUOJg9y1';
+                        $kinokuniya2 = 'BIcVpHsR9pR0smTFkokmlHchksH3';
+                        $kinokuniya3 = 'sXFPJ2OqBaeD9pGvlzITPMVf8gh2';
+                        $kinokuniya4 = 'XuNX2ttNrcQ60AbvOPPI9nb9O332';
+                        $kinokuniya5 = 'ZhvLL3XiR4Zs0qkzrLlx7oU6hTp1';
+                        
+                        // popular
+                        $popular1 = 'hoiuhbXr5mgOuPPm8WuDPAmc3843';
+                        $popular2 = 't6hGF7UCBLXO3mipj8IfW0GZri83';
+                        $popular3 = 'fJMHB0AHLaYqKNjlc41zRP441zH3';
+                        $popular4 = 'rgHauq9BLxZHNqH9VQzMFAJiNpQ2';
+                        $popular5 = 'RvLBIRqoRHQFX3eB4A4uVSl49KE3';
+                        
+                        // $mph = 'CIqF4dqDMsPETn5dkw1LE9UDy322';
+                        // $popular = 'hoiuhbXr5mgOuPPm8WuDPAmc3843';
+                        // $kinokuniya = 'Bx4DBsutciaTExDiFob6TUOJg9y1';
+                        
+                        if (Session::get('firebaseUserId') == $mph1 || Session::get('firebaseUserId') == $mph2 || Session::get('firebaseUserId') == $mph3 || Session::get('firebaseUserId') == $mph4 || Session::get('firebaseUserId') == $mph5) {
                             echo '<div class="mb-3" hidden>';
                             echo '<label for="store" class="form-label">Store</label>';
-                            echo '<input type="text" class="form-control" id="store" name="store" value="CIqF4dqDMsPETn5dkw1LE9UDy322">';
+                            echo '<input type="text" class="form-control" id="store" name="store" value="mph">';
                             echo '</div>';
-                        } elseif (Session::get('firebaseUserId') == $popular) {
+                        } elseif (Session::get('firebaseUserId') == $popular1 || Session::get('firebaseUserId') == $popular2 || Session::get('firebaseUserId') == $popular3 || Session::get('firebaseUserId') == $popular4 || Session::get('firebaseUserId') == $popular5) {
                             echo '<div class="mb-3" hidden>';
                             echo '<label for="store" class="form-label">Store</label>';
-                            echo '<input type="text" class="form-control" id="store" name="store" value="hoiuhbXr5mgOuPPm8WuDPAmc3843">';
+                            echo '<input type="text" class="form-control" id="store" name="store" value="popular">';
                             echo '</div>';
-                        } elseif (Session::get('firebaseUserId') == $kinokuniya) {
+                        } elseif (Session::get('firebaseUserId') == $kinokuniya1 || Session::get('firebaseUserId') == $kinokuniya2 || Session::get('firebaseUserId') == $kinokuniya3 || Session::get('firebaseUserId') == $kinokuniya4 || Session::get('firebaseUserId') == $kinokuniya5) {
                             echo '<div class="mb-3" hidden>';
                             echo '<label for="store" class="form-label">Store</label>';
-                            echo '<input type="text" class="form-control" id="store" name="store" value="Bx4DBsutciaTExDiFob6TUOJg9y1">';
+                            echo '<input type="text" class="form-control" id="store" name="store" value="kinokuniya">';
                             echo '</div>';
                         } else {
                             echo 'Please Login to an account';
@@ -340,10 +362,32 @@ if (Session::has('firebaseUserId') && Session::has('idToken')) {
         $sesi = Session::get('firebaseUserId');
         ?>
 
-        var session = 
-        '<?php 
-        echo $sesi; 
-        ?>';
+        var session =
+            '<?php
+            echo $sesi;
+            ?>';
+
+        // mph
+        mph1 = "CIqF4dqDMsPETn5dkw1LE9UDy322"
+        mph2 = "vCw4TwpJaFSsrF3JqQKe4nN4KFV2"
+        mph3 = "YU0mSMpimFXAAj5hZusJfyO21Lt2"
+        mph4 = "Zil8H0fMHJWraF0NivYZIL18dGn2"
+        mph5 = "YXhYZaVu0xP757sGf6FTliFBSVd2"
+
+        // kinokuniya
+        kinokuniya1 = "Bx4DBsutciaTExDiFob6TUOJg9y1"
+        kinokuniya2 = "BIcVpHsR9pR0smTFkokmlHchksH3"
+        kinokuniya3 = "sXFPJ2OqBaeD9pGvlzITPMVf8gh2"
+        kinokuniya4 = "XuNX2ttNrcQ60AbvOPPI9nb9O332"
+        kinokuniya5 = "ZhvLL3XiR4Zs0qkzrLlx7oU6hTp1"
+
+
+        // popular
+        popular1 = "hoiuhbXr5mgOuPPm8WuDPAmc3843"
+        popular2 = "t6hGF7UCBLXO3mipj8IfW0GZri83"
+        popular3 = "fJMHB0AHLaYqKNjlc41zRP441zH3"
+        popular4 = "rgHauq9BLxZHNqH9VQzMFAJiNpQ2"
+        popular5 = "RvLBIRqoRHQFX3eB4A4uVSl49KE3"
 
         // get post data
         database.ref("books").on('value', function(snapshot) {
@@ -351,26 +395,79 @@ if (Session::has('firebaseUserId') && Session::has('idToken')) {
             var htmls = [];
             $.each(value, function(index, value) {
                 if (value) {
-                    if (session == value.store) {
-                        htmls.push('<tr>\
-                                                                    <td>' + index + '</td>\
-                                                                    <td>' + value.isbn + '</td>\
-                                                                    <td>' + value.title + '</td>\
-                                                                    <td>' + value.language + '</td>\
-                                                                    <td>' + value.publisher + '</td>\
-                                                                    <td> RM' + value.price + '</td>\
-                                                                    <td>' + value.store + '</td>\
-                                                                    <td>' + value.category + '</td>\
-                                                                    <td>' + value.stock + '</td>\
-                                                                    <td style="text-align:justify;">' + value.summary +
-                            '</td>\
-                                                                    <td><a data-bs-toggle="modal" data-bs-target="#update-modal" class="btn btn-success update-post" data-id="' +
-                            index +
-                            '">Update</a>\
-                                                                    <a data-bs-toggle="modal" data-bs-target="#delete-modal" class="btn btn-danger delete-data" data-id="' +
-                            index + '">Delete</a></td>\
-                                                                </tr>');
+                    if (session == mph1 || session == mph2 || session == mph3 || session == mph4 ||session == mph5) {
+                        if (value.store == 'mph') {
+                            htmls.push('<tr>\
+                                    <td>' + index + '</td>\
+                                    <td>' + value.isbn + '</td>\
+                                    <td>' + value.title + '</td>\
+                                    <td>' + value.language + '</td>\
+                                    <td>' + value.publisher + '</td>\
+                                    <td> RM' + value.price + '</td>\
+                                    <td>' + value.store + '</td>\
+                                    <td>' + value.category + '</td>\
+                                    <td>' + value.stock + '</td>\
+                                    <td style="text-align:justify;">' + value
+                                .summary +
+                                '</td>\
+                                                                                <td><a data-bs-toggle="modal" data-bs-target="#update-modal" class="btn btn-success update-post" data-id="' +
+                                index +
+                                '">Update</a>\
+                                                                                <a data-bs-toggle="modal" data-bs-target="#delete-modal" class="btn btn-danger delete-data" data-id="' +
+                                index + '">Delete</a></td>\
+                                                                            </tr>');
+                        }
                     }
+
+                    if (session == kinokuniya1 || session == kinokuniya2 || session == kinokuniya3 || session == kinokuniya4 || session == kinokuniya5) {
+                        if (value.store == 'kinokuniya') {
+                            htmls.push('<tr>\
+                                    <td>' + index + '</td>\
+                                    <td>' + value.isbn + '</td>\
+                                    <td>' + value.title + '</td>\
+                                    <td>' + value.language + '</td>\
+                                    <td>' + value.publisher + '</td>\
+                                    <td> RM' + value.price + '</td>\
+                                    <td>' + value.store + '</td>\
+                                    <td>' + value.category + '</td>\
+                                    <td>' + value.stock + '</td>\
+                                    <td style="text-align:justify;">' + value
+                                .summary +
+                                '</td>\
+                                                                                <td><a data-bs-toggle="modal" data-bs-target="#update-modal" class="btn btn-success update-post" data-id="' +
+                                index +
+                                '">Update</a>\
+                                                                                <a data-bs-toggle="modal" data-bs-target="#delete-modal" class="btn btn-danger delete-data" data-id="' +
+                                index + '">Delete</a></td>\
+                                                                            </tr>');
+                        }
+                    }
+
+                    if (session == popular1 || session == popular2 || session == popular3 || session == popular4 || session == popular5) {
+                        if (value.store == 'popular') {
+                            htmls.push('<tr>\
+                                    <td>' + index + '</td>\
+                                    <td>' + value.isbn + '</td>\
+                                    <td>' + value.title + '</td>\
+                                    <td>' + value.language + '</td>\
+                                    <td>' + value.publisher + '</td>\
+                                    <td> RM' + value.price + '</td>\
+                                    <td>' + value.store + '</td>\
+                                    <td>' + value.category + '</td>\
+                                    <td>' + value.stock + '</td>\
+                                    <td style="text-align:justify;">' + value
+                                .summary +
+                                '</td>\
+                                                                                <td><a data-bs-toggle="modal" data-bs-target="#update-modal" class="btn btn-success update-post" data-id="' +
+                                index +
+                                '">Update</a>\
+                                                                                <a data-bs-toggle="modal" data-bs-target="#delete-modal" class="btn btn-danger delete-data" data-id="' +
+                                index + '">Delete</a></td>\
+                                                                            </tr>');
+                        }
+                    }
+
+
                 }
                 lastId = index;
             });

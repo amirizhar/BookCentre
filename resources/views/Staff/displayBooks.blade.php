@@ -50,7 +50,7 @@ if (Session::has('firebaseUserId') && Session::has('idToken')) {
                                     <th scope="col">Publisher</th>
                                     <th scope="col">Price (RM)</th>
                                     <th scope="col">Store</th>
-                                    {{-- <th scope="col">Category</th> --}}
+                                    <th scope="col">Category</th>
                                     <th scope="col">Stock</th>
                                     <th scope="col">Summary</th>
                                 </tr>
@@ -101,6 +101,27 @@ if (Session::has('firebaseUserId') && Session::has('idToken')) {
             echo $sesi;
             ?>';
 
+        // mph
+        mph1 = "CIqF4dqDMsPETn5dkw1LE9UDy322"
+        mph2 = "vCw4TwpJaFSsrF3JqQKe4nN4KFV2"
+        mph3 = "YU0mSMpimFXAAj5hZusJfyO21Lt2"
+        mph4 = "Zil8H0fMHJWraF0NivYZIL18dGn2"
+        mph5 = "YXhYZaVu0xP757sGf6FTliFBSVd2"
+
+        // kinokuniya
+        kinokuniya1 = "Bx4DBsutciaTExDiFob6TUOJg9y1"
+        kinokuniya2 = "BIcVpHsR9pR0smTFkokmlHchksH3"
+        kinokuniya3 = "sXFPJ2OqBaeD9pGvlzITPMVf8gh2"
+        kinokuniya4 = "XuNX2ttNrcQ60AbvOPPI9nb9O332"
+        kinokuniya5 = "ZhvLL3XiR4Zs0qkzrLlx7oU6hTp1"
+
+
+        // popular
+        popular1 = "hoiuhbXr5mgOuPPm8WuDPAmc3843"
+        popular2 = "t6hGF7UCBLXO3mipj8IfW0GZri83"
+        popular3 = "fJMHB0AHLaYqKNjlc41zRP441zH3"
+        popular4 = "rgHauq9BLxZHNqH9VQzMFAJiNpQ2"
+        popular5 = "RvLBIRqoRHQFX3eB4A4uVSl49KE3"
 
         // get post data
         database.ref("books").on('value', function(snapshot) {
@@ -108,24 +129,71 @@ if (Session::has('firebaseUserId') && Session::has('idToken')) {
             var htmls = [];
             $.each(value, function(index, value) {
                 if (value) {
-                    if (session == value.store) {
-                        if (value.category == category) {
-                            htmls.push('<tr>\
-                                    <td>' + index + '</td>\
-                                    <td>' + value.isbn + '</td>\
-                                    <td>' + value.title + '</td>\
-                                    <td>' + value.language + '</td>\
-                                    <td>' + value.publisher + '</td>\
-                                    <td>' + value.price + '</td>\
-                                    <td>' + value.store + '</td>\
-                                    <td>' + value.stock + '</td>\
-                                    <td style="text-align:justify;">' + value.summary + '</td>\
-                                </tr>');
+                    if (value.category == category) {
+                        if (session == mph1 || session == mph2 || session == mph3 || session == mph4 ||
+                            session == mph5) {
+                            if (value.store == 'mph') {
+                                htmls.push('<tr>\
+                                                <td>' + index + '</td>\
+                                                <td>' + value.isbn + '</td>\
+                                                <td>' + value.title + '</td>\
+                                                <td>' + value.language + '</td>\
+                                                <td>' + value.publisher + '</td>\
+                                                <td> RM' + value.price + '</td>\
+                                                <td>' + value.store + '</td>\
+                                                <td>' + value.category + '</td>\
+                                                <td>' + value.stock + '</td>\
+                                                <td style="text-align:justify;">' + value.summary + '</td>\
+                                                </tr>');
+                            }
                         }
                     }
+
+                    if (value.category == category) {
+                        if (session == kinokuniya1 || session == kinokuniya2 || session == kinokuniya3 ||
+                            session == kinokuniya4 || session == kinokuniya5) {
+                            if (value.store == 'kinokuniya') {
+                                htmls.push('<tr>\
+                                                <td>' + index + '</td>\
+                                                <td>' + value.isbn + '</td>\
+                                                <td>' + value.title + '</td>\
+                                                <td>' + value.language + '</td>\
+                                                <td>' + value.publisher + '</td>\
+                                                <td> RM' + value.price + '</td>\
+                                                <td>' + value.store + '</td>\
+                                                <td>' + value.category + '</td>\
+                                                <td>' + value.stock + '</td>\
+                                                <td style="text-align:justify;">' + value.summary + '</td>\
+                                                </tr>');
+                            }
+                        }
+                    }
+
+                    if (value.category == category) {
+                        if (session == popular1 || session == popular2 || session == popular3 || session ==
+                            popular4 || session == popular5) {
+                            if (value.store == 'popular') {
+                                htmls.push('<tr>\
+                                            <td>' + index + '</td>\
+                                                <td>' + value.isbn + '</td>\
+                                                <td>' + value.title + '</td>\
+                                                <td>' + value.language + '</td>\
+                                                <td>' + value.publisher + '</td>\
+                                                <td> RM' + value.price + '</td>\
+                                                <td>' + value.store + '</td>\
+                                                <td>' + value.category + '</td>\
+                                                <td>' + value.stock + '</td>\
+                                                <td style="text-align:justify;">' + value.summary + '</td>\
+                                                </tr>');
+                            }
+                        }
+                    }
+
+
                 }
                 lastId = index;
             });
+
             $('#table-list').html(htmls);
         });
     </script>

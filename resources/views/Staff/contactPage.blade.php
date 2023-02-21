@@ -1,11 +1,10 @@
 {{-- reference = https://www.laravelcode.com/post/laravel-8-crud-operation-example-using-google-firebase  --}}
 
 <?php
-if (Session::has('firebaseUserId') && Session::has('idToken')) 
-{
+if (Session::has('firebaseUserId') && Session::has('idToken')) {
     // dd("User masih login.");
 } else {
-    dd("User sudah logout.");
+    dd('User sudah logout.');
 }
 ?>
 
@@ -22,9 +21,9 @@ if (Session::has('firebaseUserId') && Session::has('idToken'))
 
 <style>
     .container {
-      margin-top: 70px;
+        margin-top: 70px;
     }
-  </style>
+</style>
 
 <body>
 
@@ -47,10 +46,11 @@ if (Session::has('firebaseUserId') && Session::has('idToken'))
                             <thead>
                                 <tr>
                                     {{-- <th scope="col">#</th> --}}
-                                    <th scope="col">#</th>
+                                    <th scope="col">Phone Number</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Messages</th>
+                                    <th scope="col">Store</th>
                                     <th scope="col">Date and Time</th>
                                     {{-- <th scope="col">Store</th>
                                     <th scope="col">Category</th>
@@ -85,10 +85,38 @@ if (Session::has('firebaseUserId') && Session::has('idToken'))
 
         // Initialize Firebase
         const app = firebase.initializeApp(firebaseConfig);
-
         var database = firebase.database();
-
         var lastId = 0;
+
+        <?php
+        $sesi = Session::get('firebaseUserId');
+        ?>
+
+        var session =
+            '<?php
+            echo $sesi;
+            ?>';
+
+        // mph
+        mph1 = "CIqF4dqDMsPETn5dkw1LE9UDy322"
+        mph2 = "vCw4TwpJaFSsrF3JqQKe4nN4KFV2"
+        mph3 = "YU0mSMpimFXAAj5hZusJfyO21Lt2"
+        mph4 = "Zil8H0fMHJWraF0NivYZIL18dGn2"
+        mph5 = "YXhYZaVu0xP757sGf6FTliFBSVd2"
+
+        // kinokuniya
+        kinokuniya1 = "Bx4DBsutciaTExDiFob6TUOJg9y1"
+        kinokuniya2 = "BIcVpHsR9pR0smTFkokmlHchksH3"
+        kinokuniya3 = "sXFPJ2OqBaeD9pGvlzITPMVf8gh2"
+        kinokuniya4 = "XuNX2ttNrcQ60AbvOPPI9nb9O332"
+        kinokuniya5 = "ZhvLL3XiR4Zs0qkzrLlx7oU6hTp1"
+
+        // popular
+        popular1 = "hoiuhbXr5mgOuPPm8WuDPAmc3843"
+        popular2 = "t6hGF7UCBLXO3mipj8IfW0GZri83"
+        popular3 = "fJMHB0AHLaYqKNjlc41zRP441zH3"
+        popular4 = "rgHauq9BLxZHNqH9VQzMFAJiNpQ2"
+        popular5 = "RvLBIRqoRHQFX3eB4A4uVSl49KE3"
 
         // get post data
         database.ref("contacts").on('value', function(snapshot) {
@@ -96,43 +124,78 @@ if (Session::has('firebaseUserId') && Session::has('idToken'))
             var htmls = [];
             $.each(value, function(index, value) {
                 if (value) {
+                    if (session == mph1 || session == mph2 || session == mph3 || session == mph4 ||session == mph5){
+                        if (value.store == 'mph') {
                     htmls.push('<tr>\
                                 <td>' + index + '</td>\
                                 <td>' + value.email + '</td>\
                                 <td>' + value.name + '</td>\
-                                <td>' + value.messages + '</td>\
+                                <td>' + value.message + '</td>\
+                                <td>' + value.store + '</td>\
                                 <td>' + value.datetime + '</td>\
                                 <td>\
                                 </td>\
                             </tr>');
+                        }
                 }
+
+                if (session == kinokuniya1 || session == kinokuniya2 || session == kinokuniya3 || session == kinokuniya4 || session == kinokuniya5){
+                        if (value.store == 'kinokuniya') {
+                    htmls.push('<tr>\
+                                <td>' + index + '</td>\
+                                <td>' + value.email + '</td>\
+                                <td>' + value.name + '</td>\
+                                <td>' + value.message + '</td>\
+                                <td>' + value.store + '</td>\
+                                <td>' + value.datetime + '</td>\
+                                <td>\
+                                </td>\
+                            </tr>');
+                        }
+                }
+
+                if (session == popular1 || session == popular2 || session == popular3 || session == popular4 || session == popular5){
+                        if (value.store == 'popular') {
+                    htmls.push('<tr>\
+                                <td>' + index + '</td>\
+                                <td>' + value.email + '</td>\
+                                <td>' + value.name + '</td>\
+                                <td>' + value.message + '</td>\
+                                <td>' + value.store + '</td>\
+                                <td>' + value.datetime + '</td>\
+                                <td>\
+                                </td>\
+                            </tr>');
+                        }
+                }
+            }
                 lastId = index;
             });
             $('#table-list').html(htmls);
         });
 
-        // -----------------------add data----------------------------------
-        // $('#add-submit').on('click', function() {
-        //     var formData = $('#add-post').serializeArray();
-        //     var createId = Number(lastId) + 1;
+                // -----------------------add data----------------------------------
+                // $('#add-submit').on('click', function() {
+                //     var formData = $('#add-post').serializeArray();
+                //     var createId = Number(lastId) + 1;
 
-        //     firebase.database().ref('books/' + createId).set({
-        //         isbn: formData[0].value,
-        //         title: formData[1].value,
-        //         language: formData[2].value,
-        //         publisher: formData[3].value,
-        //         price: formData[4].value,
-        //         store: formData[5].value,
-        //         summary: formData[6].value,
-        //         category: formData[7].value,
-        //         stock: formData[8].value,
-        //     });
+                //     firebase.database().ref('books/' + createId).set({
+                //         isbn: formData[0].value,
+                //         title: formData[1].value,
+                //         language: formData[2].value,
+                //         publisher: formData[3].value,
+                //         price: formData[4].value,
+                //         store: formData[5].value,
+                //         summary: formData[6].value,
+                //         category: formData[7].value,
+                //         stock: formData[8].value,
+                //     });
 
-        //     // Reassign lastID value
-        //     lastId = createId;
-        //     $("#add-post")[0].reset();
-        //     $("#add-modal").modal('hide');
-        // });
+                //     // Reassign lastID value
+                //     lastId = createId;
+                //     $("#add-post")[0].reset();
+                //     $("#add-modal").modal('hide');
+                // });
     </script>
 </body>
 
